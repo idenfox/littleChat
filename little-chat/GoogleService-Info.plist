@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>654448456863-pdis990rfg7d9ou4suoa60mbk4lc523e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.654448456863-pdis990rfg7d9ou4suoa60mbk4lc523e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyALjq3YYOfWj8bftHeheCVVtYkueEt46_k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>654448456863</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>littleSoft.little-chat</string>
+	<key>PROJECT_ID</key>
+	<string>littlechat-1b743</string>
+	<key>STORAGE_BUCKET</key>
+	<string>littlechat-1b743.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:654448456863:ios:8e3ab9e388349f98e2deaa</string>
+</dict>
+</plist>
