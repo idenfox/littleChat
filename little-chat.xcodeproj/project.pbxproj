@@ -3,27 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		ED9D13852749FFB7008FB3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D13842749FFB7008FB3E7 /* AppDelegate.swift */; };
 		ED9D13872749FFB7008FB3E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D13862749FFB7008FB3E7 /* SceneDelegate.swift */; };
-		ED9D13892749FFB7008FB3E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D13882749FFB7008FB3E7 /* ViewController.swift */; };
+		ED9D13892749FFB7008FB3E7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D13882749FFB7008FB3E7 /* WelcomeViewController.swift */; };
 		ED9D138C2749FFB7008FB3E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9D138A2749FFB7008FB3E7 /* Main.storyboard */; };
 		ED9D138E2749FFB8008FB3E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9D138D2749FFB8008FB3E7 /* Assets.xcassets */; };
 		ED9D13912749FFB8008FB3E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9D138F2749FFB8008FB3E7 /* LaunchScreen.storyboard */; };
+		ED9D139C274A01B0008FB3E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D139B274A01B0008FB3E7 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED9D13812749FFB7008FB3E7 /* little-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9D13842749FFB7008FB3E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9D13862749FFB7008FB3E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED9D13882749FFB7008FB3E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED9D13882749FFB7008FB3E7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		ED9D138B2749FFB7008FB3E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED9D138D2749FFB8008FB3E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED9D13902749FFB8008FB3E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED9D13922749FFB8008FB3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED9D139B274A01B0008FB3E7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		ED9D13832749FFB7008FB3E7 /* little-chat */ = {
 			isa = PBXGroup;
 			children = (
+				ED9D1398274A00CE008FB3E7 /* Model */,
+				ED9D1399274A00D7008FB3E7 /* View */,
+				ED9D139A274A00E0008FB3E7 /* Controller */,
 				ED9D13842749FFB7008FB3E7 /* AppDelegate.swift */,
 				ED9D13862749FFB7008FB3E7 /* SceneDelegate.swift */,
-				ED9D13882749FFB7008FB3E7 /* ViewController.swift */,
-				ED9D138A2749FFB7008FB3E7 /* Main.storyboard */,
 				ED9D138D2749FFB8008FB3E7 /* Assets.xcassets */,
 				ED9D138F2749FFB8008FB3E7 /* LaunchScreen.storyboard */,
 				ED9D13922749FFB8008FB3E7 /* Info.plist */,
 			);
 			path = "little-chat";
+			sourceTree = "<group>";
+		};
+		ED9D1398274A00CE008FB3E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED9D139B274A01B0008FB3E7 /* Constants.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ED9D1399274A00D7008FB3E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED9D138A2749FFB7008FB3E7 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED9D139A274A00E0008FB3E7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED9D13882749FFB7008FB3E7 /* WelcomeViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,7 +130,7 @@
 				};
 			};
 			buildConfigurationList = ED9D137C2749FFB7008FB3E7 /* Build configuration list for PBXProject "little-chat" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -138,9 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9D13892749FFB7008FB3E7 /* ViewController.swift in Sources */,
+				ED9D13892749FFB7008FB3E7 /* WelcomeViewController.swift in Sources */,
 				ED9D13852749FFB7008FB3E7 /* AppDelegate.swift in Sources */,
 				ED9D13872749FFB7008FB3E7 /* SceneDelegate.swift in Sources */,
+				ED9D139C274A01B0008FB3E7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +323,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -302,11 +331,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cibertec.little-chat";
+				PRODUCT_BUNDLE_IDENTIFIER = "littleSoft.little-chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,6 +352,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,11 +360,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cibertec.little-chat";
+				PRODUCT_BUNDLE_IDENTIFIER = "littleSoft.little-chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
