@@ -21,21 +21,44 @@ class RegisterViewController: UIViewController {
         nicknameTextfield.delegate = self
     }
     
+    private func textfieldErrorDataInput() -> String? {
+        if (emailTextfield.text == nil ||
+            passwordTextfield.text == nil ||
+            nicknameTextfield.text == nil ||
+            emailTextfield.text == "" ||
+            passwordTextfield.text == "" ||
+            nicknameTextfield.text == "") {
+            return "Por favor ingrese sus datos"
+        } else if (emailTextfield.text!.count <= 5 ||
+                   passwordTextfield.text!.count <= 5 ||
+                   nicknameTextfield.text!.count <= 5) {
+            return "Ingrese al menos 5 caracteres en cualquiera de los campos"
+        } else {
+            return nil
+        }
+    }
+    
     @IBAction func registerPressed(_ sender: UIButton) {
-       
-        if let email = emailTextfield.text, let password = passwordTextfield.text {
-            self.view.activityStartAnimating(activityColor: UIColor(named: K.BrandColors.lightGreen)!, backgroundColor: .clear)
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                if let e = error {
-                    print(e)
+        let errorTextField = self.textfieldErrorDataInput()
+        if (errorTextField == nil) {
+            self.view.activityStartAnimating(activityColor: UIColor(named: K.BrandColors.darkGreen)!, backgroundColor: .clear)
+            Auth.auth().createUser(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
+                if (error == nil) {
                     self.view.activityStopAnimating()
-                } else {
-                    //Navigate to the ChatViewController
                     self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                } else {
                     self.view.activityStopAnimating()
+                    let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
+        } else {
+            let alert = UIAlertController(title: "Error de validación", message: errorTextField!, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
+        
     }
     
 }

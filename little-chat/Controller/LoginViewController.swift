@@ -19,19 +19,36 @@ class LoginViewController: UIViewController {
         passwordTextfield.delegate = self
     }
     
+    private func textfieldErrorDataInput() -> String? {
+        if (emailTextfield.text == nil ||
+            passwordTextfield.text == nil ||
+            emailTextfield.text == "" ||
+            passwordTextfield.text == "") {
+            return "Por favor ingrese sus datos"
+        } else {
+            return nil
+        }
+    }
     
     @IBAction func loginPressed(_ sender: UIButton) {
-        self.view.activityStartAnimating(activityColor: UIColor(named: K.BrandColors.lightGreen)!, backgroundColor: .clear)
-        if let email = emailTextfield.text, let password = passwordTextfield.text {
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let e = error {
-                    print(e)
+        let errorTextField = self.textfieldErrorDataInput()
+        if (errorTextField == nil) {
+            self.view.activityStartAnimating(activityColor: UIColor(named: K.BrandColors.lightGreen)!, backgroundColor: .clear)
+            Auth.auth().signIn(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
+                if (error == nil) {
                     self.view.activityStopAnimating()
-                } else {
                     self.performSegue(withIdentifier: K.loginSegue, sender: self)
+                } else {
                     self.view.activityStopAnimating()
+                    let alert = UIAlertController(title: "Error de servicio", message: error!.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
+        } else {
+            let alert = UIAlertController(title: "Error de validación", message: errorTextField!, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
