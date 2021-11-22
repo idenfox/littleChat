@@ -40,13 +40,13 @@ class LoginViewController: UIViewController {
                     self.performSegue(withIdentifier: K.loginSegue, sender: self)
                 } else {
                     self.view.activityStopAnimating()
-                    let alert = UIAlertController(title: "Error de servicio", message: error!.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
         } else {
-            let alert = UIAlertController(title: "Error de validación", message: errorTextField!, preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "¡Verifica tus datos!", message: errorTextField!, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

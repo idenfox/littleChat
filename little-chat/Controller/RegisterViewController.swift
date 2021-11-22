@@ -14,6 +14,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var nicknameTextfield: UITextField!
     
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextfield.delegate = self
@@ -29,12 +31,26 @@ class RegisterViewController: UIViewController {
             passwordTextfield.text == "" ||
             nicknameTextfield.text == "") {
             return "Por favor ingrese sus datos"
-        } else if (emailTextfield.text!.count <= 5 ||
-                   passwordTextfield.text!.count <= 5 ||
-                   nicknameTextfield.text!.count <= 5) {
-            return "Ingrese al menos 5 caracteres en cualquiera de los campos"
+        } else if (emailTextfield.text!.count < 5 ||
+                   passwordTextfield.text!.count < 5 ||
+                   nicknameTextfield.text!.count < 3) {
+            return "Tu correo y contraseña deben de tener al menos 5 carácteres y tu nickname al menos 3."
         } else {
             return nil
+        }
+    }
+    
+    private func saveAditionaldata(userEmail: String, nickname: String) {
+        self.db.collection("users").document(userEmail).setData([
+            "nickname": nickname
+        ]) { err in
+            if let err = err {
+                let alert = UIAlertController(title: "Error", message: err.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.performSegue(withIdentifier: K.registerSegue, sender: self)
+            }
         }
     }
     
@@ -44,8 +60,9 @@ class RegisterViewController: UIViewController {
             self.view.activityStartAnimating(activityColor: UIColor(named: K.BrandColors.darkGreen)!, backgroundColor: .clear)
             Auth.auth().createUser(withEmail: self.emailTextfield.text!, password: self.passwordTextfield.text!) { authResult, error in
                 if (error == nil) {
+                    let userEmail = authResult?.user.email
                     self.view.activityStopAnimating()
-                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                    self.saveAditionaldata(userEmail: userEmail!, nickname: self.nicknameTextfield.text!)
                 } else {
                     self.view.activityStopAnimating()
                     let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertController.Style.alert)
@@ -54,13 +71,11 @@ class RegisterViewController: UIViewController {
                 }
             }
         } else {
-            let alert = UIAlertController(title: "Error de validación", message: errorTextField!, preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "¡Verifica tus datos!", message: errorTextField!, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
-    
 }
 
 extension RegisterViewController: UITextFieldDelegate {
