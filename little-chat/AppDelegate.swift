@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.disabledToolbarClasses.append(ChatViewController.self)
         
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
