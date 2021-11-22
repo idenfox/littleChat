@@ -37,7 +37,6 @@ class ChatViewController: UIViewController {
         docRef.getDocument(source: .server) { doc, _ in
             if (doc != nil) {
                 self.nickname = doc!.data()!["nickname"] as! String
-                print("RENZOPR \(doc!.data()!["nickname"] as! String)")
             }
         }
     }
@@ -94,17 +93,6 @@ class ChatViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    @IBAction func infoPressed(_ sender: UIBarButtonItem) {
-        
-//        do {
-//            try Auth.auth().signOut()
-//            navigationController?.popToRootViewController(animated: true)
-//
-//        } catch let signOutError as NSError {
-//          print ("Error signing out: %@", signOutError)
-//        }
     }
 }
 

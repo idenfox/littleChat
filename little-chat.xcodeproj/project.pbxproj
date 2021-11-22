@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06B14FA2C37D41AB38F67CCD /* Pods_little_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FEE336AE65E1091A4574BD /* Pods_little_chat.framework */; };
 		ED073D97274A16D600DC6650 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED073D96274A16D600DC6650 /* GoogleService-Info.plist */; };
+		ED301882274B52080062178D /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED301881274B52080062178D /* InfoViewController.swift */; };
 		ED9D13852749FFB7008FB3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D13842749FFB7008FB3E7 /* AppDelegate.swift */; };
 		ED9D13872749FFB7008FB3E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D13862749FFB7008FB3E7 /* SceneDelegate.swift */; };
 		ED9D13892749FFB7008FB3E7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D13882749FFB7008FB3E7 /* WelcomeViewController.swift */; };
@@ -29,6 +30,7 @@
 		B184CC77969049760A68739E /* Pods-little-chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-little-chat.debug.xcconfig"; path = "Target Support Files/Pods-little-chat/Pods-little-chat.debug.xcconfig"; sourceTree = "<group>"; };
 		E1FEE336AE65E1091A4574BD /* Pods_little_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_little_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED073D96274A16D600DC6650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED301881274B52080062178D /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		ED7AB9F5EEF30AF749DA57A8 /* Pods-little-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-little-chat.release.xcconfig"; path = "Target Support Files/Pods-little-chat/Pods-little-chat.release.xcconfig"; sourceTree = "<group>"; };
 		ED9D13812749FFB7008FB3E7 /* little-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9D13842749FFB7008FB3E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				EDD008B1274A1AFB00DE03F6 /* LoginViewController.swift */,
 				EDD008B3274A1B1700DE03F6 /* RegisterViewController.swift */,
 				EDD008BC274A287A00DE03F6 /* ChatViewController.swift */,
+				ED301881274B52080062178D /* InfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9D13892749FFB7008FB3E7 /* WelcomeViewController.swift in Sources */,
+				ED301882274B52080062178D /* InfoViewController.swift in Sources */,
 				EDD008BB274A278400DE03F6 /* MessageCell.swift in Sources */,
 				ED9D13852749FFB7008FB3E7 /* AppDelegate.swift in Sources */,
 				ED9D13872749FFB7008FB3E7 /* SceneDelegate.swift in Sources */,
