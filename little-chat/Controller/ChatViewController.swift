@@ -16,18 +16,30 @@ class ChatViewController: UIViewController {
     let db = Firestore.firestore()
     
     var messages: [Message] = []
+    var nickname: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         title = K.appName
         navigationItem.hidesBackButton = true
-        
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
-        
         loadMessages()
         self.messageTextfield.keyboardDistanceFromTextField = 0
-        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getNickname()
+    }
+    
+    private func getNickname() {
+        let docRef = db.collection(K.FStore.usersCollection).document((Auth.auth().currentUser?.email)!)
+        docRef.getDocument(source: .server) { doc, _ in
+            if (doc != nil) {
+                self.nickname = doc!.data()!["nickname"] as! String
+                print("RENZOPR \(doc!.data()!["nickname"] as! String)")
+            }
+        }
     }
     
     func loadMessages() {
@@ -44,8 +56,10 @@ class ChatViewController: UIViewController {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
                         let data = doc.data()
-                        if let messageSender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
-                            let newMessage = Message(sender: messageSender, body: messageBody)
+                        if let messageSender = data[K.FStore.senderField] as? String,
+                           let messageBody = data[K.FStore.bodyField] as? String,
+                           let senderNickname = data[K.FStore.senderNickname] as? String {
+                            let newMessage = Message(sender: messageSender, senderNickname: senderNickname, body: messageBody)
                             self.messages.append(newMessage)
                             
                             DispatchQueue.main.async {
@@ -65,6 +79,7 @@ class ChatViewController: UIViewController {
         if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
             db.collection(K.FStore.collectionName).addDocument(data: [
                 K.FStore.senderField: messageSender,
+                K.FStore.senderNickname: self.nickname,
                 K.FStore.bodyField: messageBody,
                 K.FStore.dateField: Date().timeIntervalSince1970
             ]) { (error) in
@@ -109,6 +124,7 @@ extension ChatViewController: UITableViewDataSource {
         if message.sender == Auth.auth().currentUser?.email {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
+            cell.nicknameLabel.isHidden = true
             cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.lightGreen)
             cell.label.textColor = UIColor(named: K.BrandColors.blackText)
         }
@@ -116,12 +132,11 @@ extension ChatViewController: UITableViewDataSource {
         else {
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
+            cell.nicknameLabel.isHidden = false
             cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.darkGreen)
+            cell.nicknameLabel.text = message.senderNickname
             cell.label.textColor = .white
         }
-        
-      
-      
         return cell
     }
 }
